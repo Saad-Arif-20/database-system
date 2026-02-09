@@ -4,7 +4,39 @@
 [![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A production-ready relational database system demonstrating enterprise-level database design, normalization (BCNF), complex SQL queries, transaction management, and a Python application layer. Complete with ER diagrams, 20+ advanced queries, and comprehensive testing.
+A production-inspired relational database system demonstrating enterprise-level database design, normalization (BCNF), complex SQL queries, transaction management, and a Python application layer. Complete with ER diagrams, 20+ advanced queries, and comprehensive testing.
+
+## 🚀 At a Glance
+
+- 📊 **8-table relational schema** (BCNF normalized)
+- 🔍 **20+ advanced SQL queries** (CTEs, window functions, joins)
+- ⚡ **ACID-compliant transactions** with triggers and constraints
+- 🐍 **Python application layer** (CRUD operations, reporting)
+- 🧪 **Fully tested** with unittest framework
+- 📈 **Performance optimized** with strategic indexing
+
+⏱️ **Setup time**: ~2 minutes  
+🎓 **Ideal for**: Database systems, backend engineering, data engineering roles
+
+---
+
+## 📚 Table of Contents
+
+- [Why This Project?](#-why-this-project)
+- [Database Schema](#️-database-schema)
+- [Normalization Process](#-normalization-process)
+- [SQL Query Examples](#-sql-query-examples)
+- [Transaction Management](#-transaction-management)
+- [Data Integrity Features](#-data-integrity-features)
+- [Performance Optimization](#-performance-optimization)
+- [Python Application](#-python-application)
+- [Key Design Decisions](#-key-design-decisions)
+- [What I Learned](#-what-i-learned)
+- [Testing](#-testing)
+- [Future Enhancements](#-future-enhancements)
+- [Contributing](#-contributing)
+
+---
 
 ## 🌟 Why This Project?
 
@@ -307,10 +339,10 @@ CREATE INDEX idx_enrollment_student_grade
     ON Enrollment(StudentID, Grade);
 ```
 
-**Performance Impact:**
-- Email lookup: ~100x faster
-- Course search: ~50x faster
-- Enrollment queries: ~75x faster
+**Performance Improvements** (observed on indexed vs non-indexed queries):
+- Email lookup: Significant improvement with index on Email column
+- Course search: Faster retrieval with CourseCode index
+- Enrollment queries: Reduced query time with composite indexes
 
 ---
 
@@ -340,12 +372,68 @@ top_students = reports.get_top_students_by_program(program_id=1, limit=10)
 
 ### Features
 
-- ✅ **Connection Pooling** - Efficient database connections
+- ✅ **Connection Management** - Efficient reuse of database connections
 - ✅ **Transaction Management** - Automatic commit/rollback
 - ✅ **Error Handling** - Graceful failure recovery
 - ✅ **OOP Design** - Clean, maintainable code
 - ✅ **Type Hints** - Better code documentation
 - ✅ **Logging** - Debugging and audit trails
+
+---
+
+## 🧠 Key Design Decisions
+
+### Why SQLite?
+- **Portability**: Single-file database, no server required
+- **ACID Compliance**: Full transaction support
+- **Zero Configuration**: Perfect for demonstration and learning
+- **SQL Standards**: Supports complex queries, triggers, and constraints
+
+### Why Avoid ORM?
+- **Demonstrate SQL Mastery**: Show raw SQL proficiency
+- **Performance Control**: Direct query optimization
+- **Learning Value**: Understand database internals
+- **Transparency**: Clear visibility into database operations
+
+### Why BCNF Normalization?
+- **Eliminate Anomalies**: Prevent update, delete, and insert anomalies
+- **Data Integrity**: Ensure consistency across related tables
+- **Maintainability**: Easier to modify schema as requirements evolve
+- **Industry Standard**: Follow database design best practices
+
+### Why Triggers for Enrollment Count?
+- **Automatic Maintenance**: No manual updates required
+- **Data Consistency**: Enrollment count always accurate
+- **Atomic Operations**: Count updates happen with enrollment
+- **Prevent Race Conditions**: Database-level enforcement
+
+### Why Separate CourseOffering from Course?
+- **Historical Tracking**: Maintain records of past offerings
+- **Flexibility**: Same course, different instructors/semesters
+- **Scalability**: Support multiple sections per semester
+- **Real-World Modeling**: Reflects actual university systems
+
+---
+
+## 💡 What I Learned
+
+### Technical Insights
+- **Normalization isn't just theory**: Experienced firsthand how BCNF prevents data anomalies and simplifies updates
+- **Triggers are powerful but need care**: Learned when to use database-level logic vs application-level logic
+- **Indexes have trade-offs**: Faster reads but slower writes - strategic placement matters
+- **Transactions are essential**: ACID properties aren't optional for data integrity
+
+### Design Lessons
+- **Start with ER diagrams**: Upfront modeling saves hours of refactoring later
+- **Constraints prevent bugs**: Database-level validation catches errors early
+- **Testing is non-negotiable**: Edge cases in SQL are subtle and dangerous
+- **Documentation matters**: Complex queries need explanation for future maintainers
+
+### Professional Growth
+- **Raw SQL beats ORMs for learning**: Understanding what ORMs abstract is crucial
+- **Performance optimization is iterative**: Profile first, optimize second
+- **Real-world systems are messy**: Balancing normalization with query performance
+- **Code organization scales**: Separating concerns (DB schema, queries, app logic) pays dividends
 
 ---
 
